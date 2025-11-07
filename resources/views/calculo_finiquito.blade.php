@@ -14,14 +14,14 @@ $GLOBAL_SYSTEM_YEAR = $_COOKIE['year_x1'] ?? 2025;
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ asset('static/mui.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('static/style.css') }}" rel="stylesheet" type="text/css" />
+    <link href="static/mui.min.css" rel="stylesheet" type="text/css" />
+    <link href="static/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.js"></script>
     <script src="//cdn.muicss.com/mui-latest/js/mui.min.js"></script>
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="{{ asset('static/script.js') }}"></script>
-    <script src="{{ asset('js/accounting.js') }}"></script>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="static/script.js"></script>
+    <script src="js/accounting.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
 

@@ -15,7 +15,6 @@ $GLOBAL_SYSTEM_YEAR = $_COOKIE['year_x1'] ?? 2025;
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <base href="https://f177a821ec10.ngrok-free.app">
     <link href="static/mui.min.css" rel="stylesheet" type="text/css" />
     <link href="static/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.js"></script>

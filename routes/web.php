@@ -34,4 +34,4 @@ Route::any('contacto',[\App\Http\Controllers\OriginalController::class,'contacto
 Route::any('recomienda',[\App\Http\Controllers\OriginalController::class,'recomienda'])->name('recomienda');
 //Finiquitos
 Route::post('calcular_finiquito',[App\Http\Controllers\FiniquitoController::class,'calcularFiniquito'])->name('calcular_finiquito');
-Route::post('pdf_calculo_finiquito',[App\Http\Controllers\FiniquitoController::class,'pdfCalculoFiniquito'])->name('pdf_calculo_finiquito');
+Route::post('pdf_calculo_finiquito/{finiquito_id?}',[App\Http\Controllers\FiniquitoController::class,'pdfCalculoFiniquito'])->name('pdf_calculo_finiquito');

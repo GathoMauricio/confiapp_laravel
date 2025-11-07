@@ -7,6 +7,7 @@ use App\Models\Finiquito;
 use Mpdf\Mpdf;
 use Exception;
 use DateTime;
+use Log;
 
 class FiniquitoController extends Controller
 {
@@ -77,6 +78,13 @@ class FiniquitoController extends Controller
             'prima_vac_pendiente' => $request->prima_vac_pendiente,
             'gratificacion_servicios' => $request->gratificacion_servicios
         ]);
+
+        Log::info('Modelo de finiquito calculado:', $modelo->toArray());
+
+        if ($request->expectsJson()) {
+            // Si el cliente (Flutter) espera JSON, retorna el modelo como JSON
+            return response()->json($modelo);
+        }
 
         return view('calculo_finiquito', compact('modelo'));
     }
@@ -317,15 +325,27 @@ class FiniquitoController extends Controller
         return $esBisiesto ? 366 : 365;
     }
 
-    public function pdfCalculoFiniquito(Request $request)
+    public function pdfCalculoFiniquito(Request $request, $finiquito_id = null)
     {
-        $modelo = Finiquito::find($request->finiquito_id);
+        // Si finiquito_id no viene en la URL, busca en el request body/query
+        $idToUse = $finiquito_id ?? $request->input('finiquito_id');
+
+        if (!$idToUse) {
+            return response()->json(['error' => 'Finiquito ID es requerido'], 400);
+        }
+
+        $modelo = Finiquito::find($idToUse);
+
+        if (!$modelo) {
+            return response()->json(['error' => 'Finiquito no encontrado'], 404);
+        }
+
+
         $html = view('pdf_calculo_finiquito', compact('modelo'))->render();
 
-        // 3. Crea una instancia de mPDF
         $mpdf = new Mpdf([
             'mode' => 'utf-8',
-            'format' => 'A4', // Formato de página
+            'format' => 'A4',
             'margin_top' => 10,
             'margin_bottom' => 10,
             'margin_left' => 15,
@@ -337,10 +357,9 @@ class FiniquitoController extends Controller
 
         $mpdf->WriteHTML($html);
 
-        // 6. Envía el PDF al navegador
-        // 'I' = (Inline) Muestra el PDF en el navegador
-        // 'D' = (Download) Fuerza la descarga del PDF
-        // 'F' = (File) Guarda el PDF en un archivo en el servidor
-        return $mpdf->Output('mi-pdf_finiquito_siisarh.pdf', 'I');
+        // Si el request espera JSON o es de nuestra API, podemos considerar retornar un base64 del PDF
+        // Sin embargo, para visualizar directamente, es mejor que el servidor envíe el PDF directamente
+        // con el Content-Type adecuado. 'I' ya lo hace.
+        return $mpdf->Output('mi-pdf_finiquito_siisarh.pdf', 'I'); // 'I' envía el PDF al navegador
     }
 }
