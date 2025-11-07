@@ -9,6 +9,7 @@ class PdfController extends Controller
 {
     public function pdfPdiPrestadoresP()
     {
+        ini_set('memory_limit', '1024M');
         require resource_path('views/config.php');
 
 
@@ -441,6 +442,7 @@ tr:nth-child(even){background-color: #f2f2f2}
     }
     public function pdfPdiProyeccionP()
     {
+        ini_set('memory_limit', '1024M');
         require resource_path('views/config.php');
 
         $YEAR_PDF = $_GET['year'];
@@ -873,6 +875,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 
     public function pdfPdiCompletoP()
     {
+        ini_set('memory_limit', '1024M');
         require resource_path('views/config.php');
 
 
@@ -1255,6 +1258,7 @@ tr:nth-child(even){background-color: #f2f2f2}
     }
     public function pdfTablasIa()
     {
+        ini_set('memory_limit', '1024M');
         require resource_path('views/config.php');
 
 
@@ -1514,6 +1518,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 
     public function pdfImpuestoAnual()
     {
+        ini_set('memory_limit', '1024M');
         require resource_path('views/config.php');
         function impuesto_anual($var1, $var2, $var3, $var4, $var5, $var6)
         {
@@ -1851,6 +1856,7 @@ Código Fiscal de la Federación Art. 17-A
     }
     public function pdfHonorarios()
     {
+        ini_set('memory_limit', '1024M');
         require resource_path('views/config.php');
 
         if (isset($_GET['pdf']) and isset($_GET['monto']) and isset($_GET['tipo'])) {
@@ -2003,6 +2009,7 @@ Código Fiscal de la Federación Art. 17-A</font>
     }
     public function pdfAsimiladosSalarios()
     {
+        ini_set('memory_limit', '1024M');
         require resource_path('views/config.php');
 
 
@@ -2306,6 +2313,7 @@ Fundamentos Legales: Ley del Impuesto Sobre la Renta Art. 93, 94, 95, 96 y 10mo 
     }
     public function pdfTablasOtrasR()
     {
+        ini_set('memory_limit', '1024M');
         require resource_path('views/config.php');
 
         if (isset($_GET['tablas']) and isset($_GET['var2']) and isset($_GET['var3']) and isset($_GET['var4'])) {
@@ -3006,6 +3014,7 @@ $' . $com4[12][3] . '
     }
     public function pdfPtu()
     {
+        ini_set('memory_limit', '1024M');
         require resource_path('views/config.php');
 
         if (isset($_GET['x1']) and isset($_GET['x2']) and isset($_GET['x3'])) {
@@ -3641,6 +3650,7 @@ Código Fiscal de la Federación Art. 17-A
 
     public function pdfTablaSueldosSalarios()
     {
+        ini_set('memory_limit', '1024M');
         require_once resource_path('views/config.php');
 
         if (isset($_GET['pdf']) and isset($_GET['dias'])) {
@@ -4601,6 +4611,7 @@ $' . $com4[12][3] . '
     }
     public function pdfSueldosSalarios()
     {
+        ini_set('memory_limit', '1024M');
         require_once resource_path('views/config.php');
         if (isset($_GET['tipo']) and isset($_GET['pdf']) and isset($_GET['dias']) and isset($_GET['faltas']) and isset($_GET['ingresos'])) {
 
