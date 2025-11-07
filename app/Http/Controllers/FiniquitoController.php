@@ -327,6 +327,7 @@ class FiniquitoController extends Controller
 
     public function pdfCalculoFiniquito(Request $request, $finiquito_id = null)
     {
+        ini_set('memory_limit', '512M');
         // Si finiquito_id no viene en la URL, busca en el request body/query
         $idToUse = $finiquito_id ?? $request->input('finiquito_id');
 
