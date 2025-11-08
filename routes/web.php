@@ -35,3 +35,7 @@ Route::any('recomienda',[\App\Http\Controllers\OriginalController::class,'recomi
 //Finiquitos
 Route::post('calcular_finiquito',[App\Http\Controllers\FiniquitoController::class,'calcularFiniquito'])->name('calcular_finiquito');
 Route::post('pdf_calculo_finiquito/{finiquito_id?}',[App\Http\Controllers\FiniquitoController::class,'pdfCalculoFiniquito'])->name('pdf_calculo_finiquito');
+
+
+//Flutter app
+Route::view('flutter_emu','flutter_app')->name('flutter_emu');
